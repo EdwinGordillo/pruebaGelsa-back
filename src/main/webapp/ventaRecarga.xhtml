@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head><title>Venta</title></h:head>
+<h:body>
+    <h:form>
+        <h:selectOneMenu value="#{recargaBean.usuarioId}">
+            <f:selectItem itemLabel="Seleccione Usuario" itemValue=""/>
+            <f:selectItems value="#{recargaBean.usuarios}" var="u" itemLabel="#{u.nombre}" itemValue="#{u.id}"/>
+        </h:selectOneMenu><br/><br/>
+         <h:selectOneMenu value="#{recargaBean.operadorId}">
+            <f:selectItem itemLabel="Seleccione Operador" itemValue=""/>
+            <f:selectItems value="#{recargaBean.operadores}" var="o" itemLabel="#{o.nombre}" itemValue="#{o.id}"/>
+        </h:selectOneMenu><br/><br/>
+
+        <h:inputText value="#{recargaBean.valor}" /><br/><br/>
+
+        <h:commandButton value="Registrar" action="#{recargaBean.registrarRecarga}" /><br/><br/>
+
+        <h:dataTable value="#{recargaBean.resumen}" var="item" border="1">
+            <h:column>
+                <f:facet name="header">Usuario</f:facet>
+                #{item[0]}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Operador</f:facet>
+                 #{item[1]}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Valor</f:facet>
+                 #{item[2]}
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>
